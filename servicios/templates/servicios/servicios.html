@@ -1,0 +1,24 @@
+{% extends 'inicio/base.html' %}
+
+<link href="servicios/templates/servicios/servicios.css" rel="stylesheet" type="text/css">
+
+{% block title %} SERVICIOS {% endblock %}
+
+{% block content %}
+
+    <h1>
+        NUESTROS SERVICIOS
+    </h1>
+
+    {% for serv in servicio %}
+     <div class="card_serv">
+         <div class="card_serv_content">
+             
+             <h2>{{serv.nombre}}</h2>
+             <h5>{{serv.descripcion}}</h5>
+             
+         </div>
+     </div>
+     {% endfor %}
+
+{% endblock %}

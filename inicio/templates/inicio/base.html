@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {%block title%} {%endblock%}</title>
+</head>
+<style>
+    body{
+        background-color: bisque;
+    }
+    .header{
+        background-color: rgb(4, 173, 117);
+    }
+    .header ul li{
+        display: flex;
+        display: inline-block;
+        margin: 2em;
+        text-decoration: none;
+    }
+    .header ul li a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .footer{
+        background-color: rgb(4, 173, 117);
+    }
+    .footer ul li{
+        display: flex;
+        display: inline-block;
+        margin: 2.5em 5em;
+        text-decoration: none;
+    }
+    .footer ul li a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .productos {
+        display: inline-flex;
+        flex-wrap: wrap;
+        /* justify-content: space-evenly; */
+        justify-content: center;
+    }
+    .prdli {
+        background-color: blueviolet;
+        border: 5px red;
+        margin: 20px;
+
+    }
+
+</style>
+<body>
+
+    <div class="header">
+        <ul>
+            <li><a href="{% url 'inicio' %}"> INICIO </a></li>
+            <li><a href="{% url 'productos' %}"> PRODUCTOS </a></li>
+            <li><a href="{% url 'crearproductos' %}"> CREAR PRODUCTOS </a></li>
+            <li><a href="{% url 'servicios' %}"> SERVICIOS </a></li>
+            <li><a href="{% url 'sobrenosotros' %}"> SOBRE NOSOTROS </a></li>
+            <li> 
+            <form action="/productos/buscar/" method="GET">
+                <input type="text" placeholder="BUSCAR PRODUCTOS" name="search">
+                <button type="submit" >¡BUSCAR!</button>
+            </form>
+            </li>
+
+        </ul>
+
+    </div>
+    {% block content %}{% endblock %}
+    <div class="footer">
+        <ul>
+            <li><a href="https://es-la.facebook.com/">FACEBOOK</a></li>
+            <li><a href="https://www.instagram.com/">INSTAGRAM</a></li>
+            <li><a href="https://www.whatsapp.com/?lang=es">WHATSAPP</a></li>
+        </ul>
+    </div>
+</body>
+</html>

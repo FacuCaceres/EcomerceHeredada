@@ -1,0 +1,30 @@
+{% extends 'inicio/base.html' %}
+
+{% block title %} PRODUCTOS {% endblock %}
+
+{% block content %}
+
+    <h1>
+        DESDE AQUI PODES CREAR TODOS TUS PRODUCTOS
+    </h1>
+    {% if form %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" value="¡ENVIAR!">
+    </form>
+    {% elif n_producto %}
+    <ul>
+        <li>{{ n_producto.nombre }}</li>
+        <li>{{ n_producto.precio }}</li>
+        <li>{{ n_producto.descripcion }}</li>
+        <li>{{ n_producto.cod }}</li>
+        <li>{{ n_producto.activo }}</li>
+    </ul>
+    {% endif %}
+    
+
+
+{% endblock %}

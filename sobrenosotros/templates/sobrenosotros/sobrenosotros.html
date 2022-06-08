@@ -1,0 +1,16 @@
+{% extends 'inicio/base.html' %}
+{%block title %} SOBRENOSOTROS {%endblock%}
+{% block content %}
+    <h1>
+        SOBRE NOSOTROS
+    </h1>
+    {% for nosotros in sobrenosotros %}
+    <div class="nosotros">
+        <div class="nosotros_content">
+            <p><strong> {{nosotros.descripcion}}</strong></p>
+            <p><strong> {{nosotros.mision}}</strong></p>
+            <p><strong> {{nosotros.vision}}</strong></p>
+        </div>
+    </div>
+    {% endfor %}
+{%endblock%}

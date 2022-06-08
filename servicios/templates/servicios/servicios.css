@@ -1,0 +1,13 @@
+.titulo_servicios{
+    border: solid 3px cornflowerblue;
+}
+
+.card_serv{
+    display: flex;
+    display: inline-flex;
+    background-color: coral;
+}
+
+.card_serv_content{
+    border: solid 2px black;
+}

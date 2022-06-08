@@ -1,0 +1,25 @@
+{% extends 'inicio/base.html' %}
+
+{% block title %} PRODUCTOS {% endblock %}
+
+{% block content %}
+
+    <h1>
+        NUESTROS PRODUCTOS 
+    </h1>
+    <div class="productos">
+        <div class="product_content">
+            {% for prd in productos %}
+               <div class="prdli">
+                <h5>{{prd.nombre}}</h5>
+                <h5>{{prd.precio}}</h5>
+                <h5>{{prd.descripcion}}</h5>
+                <h5>{{prd.activo}}</h5>
+               </div> 
+            {% endfor %}     
+            </div>
+    </div>
+
+
+
+{% endblock %}
