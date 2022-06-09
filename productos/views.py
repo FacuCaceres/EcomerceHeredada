@@ -1,7 +1,12 @@
 from multiprocessing import context
+from re import template
+from typing import Type
 from django.http import HttpResponse
 from django.shortcuts import render
 from productos.models import Products
+from django.views.generic import UpdateView
+from django.urls import reverse
+
 # Create your views here.
 def productos(request):
     productos = Products.objects.all()
@@ -50,6 +55,11 @@ def eliminar_producto(request,id):
     except:
         return HttpResponse('EL PRODUCTO NO SE PUDO ELIMINAR')
 
+class Update_product(UpdateView):
+    model = Products
+    template_name = 'productos/update_product.html'
+    fields = "__all__"
+''' HAY QUE TERMINAR DE CONFIGURAR EN BOTON DE ENVIAR DEL TEMPLATES "update_product.html ¡FUNCIONA TODA LA 
+ACTUALIZACION DE DATOS SOLO QUE EN BOTON "ACTUALZIAR"! NO ENVIA A NINGUN LADO'''        
 
 
-        

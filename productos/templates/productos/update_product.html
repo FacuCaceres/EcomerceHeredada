@@ -1,0 +1,23 @@
+{% extends 'inicio/base.html' %}
+
+{% block title %} ACTUALIZAR PRODUCTOS {% endblock %}
+
+{% block content %}
+
+    <h1>
+        DESDE AQUI PODES ATUALIZAR DATOS DE TUS PRODUCTOS
+    </h1>
+    {% if form %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+   
+        <input type="submit" value="¡ACTUALIZAR!">
+    </form>
+    {% endif %}
+    
+
+
+{% endblock %}
