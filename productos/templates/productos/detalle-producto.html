@@ -1,0 +1,23 @@
+{% extends 'inicio/base.html' %}
+
+{% block title %} DETALLE PRODUCTOS {% endblock %}
+
+{% block content %}
+
+    <h1>
+        DETALLES DE NUESTROS PRODUCTOS 
+    </h1>
+    <div class="productos">
+        <div class="product_content">
+               <div class="prdli">
+                <h5>{{detalle_prd.nombre}}</h5>
+                <h5>{{detalle_prd.precio}}</h5>
+                <h5>{{detalle_prd.descripcion}}</h5>
+                <a href="#" style="color: white;">¡EDITAR!</a>
+                <a href="/productos/eliminar-producto/{{detalle_prd.id}}/" style="color: rgb(238, 255, 6);">¡ELIMINAR!</a>
+               </div> 
+        </div>
+    </div>
+
+
+{% endblock %}

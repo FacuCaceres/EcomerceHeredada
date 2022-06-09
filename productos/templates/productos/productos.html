@@ -3,7 +3,9 @@
 {% block title %} PRODUCTOS {% endblock %}
 
 {% block content %}
-
+<h1>
+    {{message}}
+</h1>
     <h1>
         NUESTROS PRODUCTOS 
     </h1>
@@ -13,8 +15,8 @@
                <div class="prdli">
                 <h5>{{prd.nombre}}</h5>
                 <h5>{{prd.precio}}</h5>
-                <h5>{{prd.descripcion}}</h5>
-                <h5>{{prd.activo}}</h5>
+                <h5>{{prd.is__active}}</h5>
+                <a href="/productos/detalle-producto/{{prd.id}}/" style="color: white;">¡VER DETALLES!</a>
                </div> 
             {% endfor %}     
             </div>
