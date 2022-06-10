@@ -16,7 +16,7 @@
     .header ul li{
         display: flex;
         display: inline-block;
-        margin: 2em;
+        margin: 0.5em;
         text-decoration: none;
     }
     .header ul li a{
@@ -56,11 +56,23 @@
 
     <div class="header">
         <ul>
+            <!-- Anda a la APP 'Nombre de la App' y trae todas las URLS coincidentes -->
             <li><a href="{% url 'inicio' %}"> INICIO </a></li>
             <li><a href="{% url 'productos' %}"> PRODUCTOS </a></li>
             <li><a href="{% url 'crearproductos' %}"> CREAR PRODUCTOS </a></li>
             <li><a href="{% url 'servicios' %}"> SERVICIOS </a></li>
             <li><a href="{% url 'sobrenosotros' %}"> SOBRE NOSOTROS </a></li>
+
+            {% if request.user.is_authenticated %}
+    <!-- Anda a la URLS /login/ y trae la URLS /logout/ -->
+            <li><a href="/login/logout/"> LOGOUT </a></li>
+
+            {% else %}
+
+            <li><a href="{% url 'login' %}"> LOGIN </a></li>
+            <li><a href="/register/"> REGISTER </a></li>
+
+            {% endif %}
             <li> 
             <form action="/productos/buscar/" method="GET">
                 <input type="text" placeholder="BUSCAR PRODUCTOS" name="search">

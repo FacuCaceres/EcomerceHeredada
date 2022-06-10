@@ -1,11 +1,11 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 #Importamos un modelos de formulario para validar correos y demas utlilidades.
 from django.contrib.auth.forms import AuthenticationForm
 
 # Importamos una funcion que verfica que el usuario y contraseña que vienen por POST son iguales a los de las DB.
-from django.contrib.auth import authenticate,login  #LOGIN simplemente me logea
+from django.contrib.auth import authenticate,login,logout #LOGIN simplemente me logea
 
 
 
@@ -57,3 +57,8 @@ def login_user(request):
 
         # Luego renderizame ese formulario en un contexto al LOGIN.html
         return render (request,'login/login.html',context=context)
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('inicio')      
