@@ -1,0 +1,20 @@
+{% extends 'inicio/base.html' %}
+
+{% block title %} REGISTRP {% endblock %}
+
+{% block content %}
+
+    <h1>
+        REGISTRATE PARA SER UN ADMINISTRADOR DE ESTA PAGINA
+    </h1>
+    <h3>{{error}}</h3>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{forms.as_table}}
+        </table>
+        <input type="submit" value="¡INGRESAR!">
+    </form>
+
+
+{% endblock %}

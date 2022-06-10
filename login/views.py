@@ -2,7 +2,8 @@ from multiprocessing import context
 from django.shortcuts import redirect, render
 
 #Importamos un modelos de formulario para validar correos y demas utlilidades.
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm #UserCreationForm Crea un registro con usuario del DB
+
 
 # Importamos una funcion que verfica que el usuario y contraseña que vienen por POST son iguales a los de las DB.
 from django.contrib.auth import authenticate,login,logout #LOGIN simplemente me logea
@@ -61,4 +62,44 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('inicio')      
+    return redirect('inicio')    
+
+def register_user(request):
+    # Si el metodo es POST 
+    if request.method == 'POST':
+        # Creame un modelo de form UserCreationForm con los datos de REQUEST.POST
+        form = UserCreationForm(request.POST)
+        # Y si es formulario es valido.
+        if form.is_valid():
+            # Guardame el formulario
+            form.save()
+            # Creame una username y pasword con datos limpios
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            # Autenticame este usuario
+            user = authenticate(username = username , password = password)
+            # Ahora logeame este usuario
+            login(request,user)
+            # Pasale el usario logeado en un contexto
+            context = {'message': f'Usiario creado correctamente, bienvenido {username}'}
+            # Por ultimo renderizame todo al inicio
+            return render(request,'inicio/inicio.html',context=context)
+
+        # Y si formulario no es valido...
+        else:
+            # Guardame los errores en una variable error
+            error = form.errors
+            # creame una nueva instancia de formulario
+            form = UserCreationForm()
+            # Pasame el nuevo formulario y el error por contexto
+            context = {'forms':form, 'error': error}
+            # Renderizame todo al register.html
+            return render(request,'login/register.html',context=context)
+
+    else:
+        # Y si el metodo es GET "Crea un formulario de este modelo"
+        form = UserCreationForm()
+        # Carga en el contexto
+        context = {'forms':form}
+        # Y renderiza todo al register.html
+        return render (request, 'login/register.html',context=context)
